@@ -11,21 +11,18 @@ public class Main {
 
     public static void main(String[] args) {
 
-        try {
-            URL path;
-            File file;
-            Runtime rf = Runtime.getRuntime();
-            Process pf;
+        Installer install;
+        Remote connect;
 
-            path = Main.class.getClassLoader().getResource("resources/sshfs-win-2.7.17334-x64.msi");
-            file = new File(path.toURI());
-            pf = rf.exec("");
-            pf.waitFor();
+        install = new Installer();
+        try{
+            install.sshfs();
+            install.winfsp();
+        }catch (Exception ex){}
 
-        } catch(Exception e) {
-            System.out.println(e.toString()); // not necessary
-            e.printStackTrace();
-        }
+
+
+
 
     }
 }
