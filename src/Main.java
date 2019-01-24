@@ -24,7 +24,9 @@ public class Main {
 //        }catch (Exception ex){}
 
         scan = new Scanner(System.in);
+        System.out.println("Enter username:");
         user = scan.nextLine();
+        System.out.println("Enter password:");
         pass = scan.nextLine();
         remote = new Remote(user, pass);
         try{

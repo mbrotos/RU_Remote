@@ -27,7 +27,7 @@ public class Remote {
 
 
     void connect() throws IOException
-    {//net use H: \\\\sshfs\\"+USERNAME+"@moon.scs.ryerson.ca "+PASSWORD+" /persistent:Yes
+    {
         String command = "c:\\windows\\system32\\net.exe use H: \\\\sshfs\\"
                 +USERNAME+"@moon.scs.ryerson.ca "+PASSWORD+" /persistent:Yes";
         pf = rf.exec(command);
