@@ -17,11 +17,11 @@ public class Main {
         String pass;
         Remote remote;
 
-//        install = new Installer();
-//        try{
-//            install.sshfs();
-//            install.winfsp();
-//        }catch (Exception ex){}
+        install = new Installer();
+        try{
+            install.sshfs();
+            install.winfsp();
+        }catch (Exception ex){}
 
         scan = new Scanner(System.in);
         System.out.println("Enter username:");
@@ -31,7 +31,7 @@ public class Main {
         remote = new Remote(user, pass);
         try{
             remote.connect();
-//            remote.RestoreConnection();
+            remote.RestoreConnection();
         }catch (Exception ex){}
 
 
