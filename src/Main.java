@@ -1,5 +1,5 @@
-import java.io.File;
-import java.net.URL;
+
+import java.util.Scanner;
 
 /**
  * @author Adam Sorrenti
@@ -12,16 +12,25 @@ public class Main {
     public static void main(String[] args) {
 
         Installer install;
-        Remote connect;
+        Scanner scan;
+        String user;
+        String pass;
+        Remote remote;
 
-        install = new Installer();
+//        install = new Installer();
+//        try{
+//            install.sshfs();
+//            install.winfsp();
+//        }catch (Exception ex){}
+
+        scan = new Scanner(System.in);
+        user = scan.nextLine();
+        pass = scan.nextLine();
+        remote = new Remote(user, pass);
         try{
-            install.sshfs();
-            install.winfsp();
+            remote.connect();
+//            remote.RestoreConnection();
         }catch (Exception ex){}
-
-
-
 
 
     }

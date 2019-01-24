@@ -27,6 +27,7 @@ public class Installer {
         file = new File(path.toURI());
         pf = rf.exec("msiexec /i \""+file.getPath()+"\"");
         pf.waitFor();
+        System.out.println("sshfs-win-2.7.17334-x64.msi has closed.");
     }
 
 
@@ -36,5 +37,6 @@ public class Installer {
         file = new File(path.toURI());
         pf = rf.exec("msiexec /i \""+file.getPath()+"\"");
         pf.waitFor();
+        System.out.println("winfsp-1.4.19016.msi has closed.");
     }
 }
