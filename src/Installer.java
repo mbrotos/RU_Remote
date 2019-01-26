@@ -23,7 +23,7 @@ public class Installer {
 
     void sshfs() throws URISyntaxException, IOException, InterruptedException
     {
-        path = Installer.class.getClassLoader().getResource("resources/sshfs-win-2.7.17334-x64.msi");
+        path = Installer.class.getClass().getResource("/sshfs-win-2.7.17334-x64.msi");
         file = new File(path.toURI());
         pf = rf.exec("msiexec /i \""+file.getPath()+"\"");
         pf.waitFor();
@@ -33,7 +33,7 @@ public class Installer {
 
     void winfsp() throws URISyntaxException, IOException, InterruptedException
     {
-        path = Installer.class.getClassLoader().getResource("resources/winfsp-1.4.19016.msi");
+        path = Installer.class.getClass().getResource("/winfsp-1.4.19016.msi");
         file = new File(path.toURI());
         pf = rf.exec("msiexec /i \""+file.getPath()+"\"");
         pf.waitFor();

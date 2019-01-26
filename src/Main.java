@@ -20,15 +20,15 @@ public class Main {
 
         scan = new Scanner(System.in);
         System.out.println("Have you installed the required programs? (Y/N)");
-        if (scan.nextLine().equalsIgnoreCase("n"))
-        {
+        /*if (scan.nextLine().equalsIgnoreCase("n"))
+        {*/
             install = new Installer();
             try
             {
                 install.sshfs();
                 install.winfsp();
             } catch (Exception ex) {}
-        }
+        //}
 
 
         do
