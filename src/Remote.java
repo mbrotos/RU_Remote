@@ -16,7 +16,7 @@ public class Remote {
     private Process pf;
     private URL path;
     private File file;
-
+    private boolean regExists;
 
     Remote(String user, String pass)
     {
@@ -26,18 +26,31 @@ public class Remote {
     }
 
 
-    void connect() throws IOException
+    void connect() throws IOException, InterruptedException
     {
         String command = "c:\\windows\\system32\\net.exe use H: \\\\sshfs\\"
                 +USERNAME+"@moon.scs.ryerson.ca "+PASSWORD+" /persistent:Yes";
         pf = rf.exec(command);
+        pf.waitFor();
     }
 
 
-    void RestoreConnection() throws URISyntaxException, IOException
+    void RestoreConnection() throws URISyntaxException, IOException, InterruptedException
     {
-        path = Installer.class.getClassLoader().getResource("resources/RestoreConnection.ps1");
-        file = new File(path.toURI());
-        pf = rf.exec("cmd /c start powershell.exe -executionpolicy ByPass -file "+file.getPath());
+        if(regExists)
+        {
+            path = Installer.class.getClassLoader().getResource("resources/RestoreConnection.ps1");
+            file = new File(path.toURI());
+            pf = rf.exec("cmd /c start powershell.exe -executionpolicy ByPass -file "+file.getPath());
+            pf.waitFor();
+            regExists = !regExists;
+        }
+    }
+
+
+    boolean checkConnection()
+    {
+        file = new File("H:\\");
+        return file.isDirectory();
     }
 }
